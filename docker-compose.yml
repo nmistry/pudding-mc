@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  mc:
+    image: itzg/minecraft-server:adopt14
+    environment:
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      EULA: "true"
+      TYPE: PAPER
+      VERSION: 1.16.3
+      SERVER_NAME: Pudding
+      SERVER_PORT: 25589
+      MOTD: "Delicious Pudding!"
+      MAX_PLAYERS: 10
+      MEMORY: 12G
+      MODE: survival
+      DIFFICULTY: hard
+      HARDCORE: "false"
+      FORCE_REDOWNLOAD: "true"
+      CONSOLE: "false"
+      WHITELIST: nmistry,UniKittyPr1ncess,mike_m93,fretnoize,nefandus,mrk_iii,TheRealDrtyDan8,Ninjapriest23,Victor_Stummvoll,Kingrohan123
+      OPS: nmistry
+      VIEW_DISTANCE: 15
+      USE_AIKAR_FLAGS: "true"
+      ICON: https://cdn.shopify.com/s/files/1/0251/2155/4510/products/8767p_99c_5x_24c750b8-a30f-4070-b87a-a299cb354183_800x.jpg
+    command: --noconsole
+    ports:
+      - 25589:25589
+      - 8189:8123
+    volumes:
+      - mc-paper:/data
+      - mc-dynmap:/data/plugins/dynmap
+      - ./plugins:/plugins
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=websecure"
+      - "traefik.frontend.rule=Host:pudding.mc.mistry.io"
+
+volumes:
+  mc-paper:
+  mc-dynmap:
