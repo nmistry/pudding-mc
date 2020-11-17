@@ -19,14 +19,19 @@ services:
       FORCE_REDOWNLOAD: "true"
       CONSOLE: "false"
       WHITELIST: nmistry,UniKittyPr1ncess,mike_m93,fretnoize,nefandus,mrk_iii,TheRealDrtyDan8,Ninjapriest23,Victor_Stummvoll,Kingrohan123
-      OPS: nmistry
-      VIEW_DISTANCE: 15
+      OPS: nmistry,mrk_iii
+      VIEW_DISTANCE: 30
       USE_AIKAR_FLAGS: "true"
       ICON: https://cdn.shopify.com/s/files/1/0251/2155/4510/products/8767p_99c_5x_24c750b8-a30f-4070-b87a-a299cb354183_800x.jpg
+      RESOURCE_PACK: https://github.com/FaithfulTeam/Faithful/raw/releases/1.16.zip
+      ENABLE_JMX: "true"
+      JMX_PORT: 7091
+      JMX_HOST: s01
     command: --noconsole
     ports:
       - 25589:25589
       - 8189:8123
+      - 7091:7091
     volumes:
       - mc-paper:/data
       - mc-dynmap:/data/plugins/dynmap
